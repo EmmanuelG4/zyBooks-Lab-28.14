@@ -38,11 +38,11 @@ void ItemToPurchase::SetName(string name){
 void ItemToPurchase::SetDescription(string description){
   itemDescription = description;
 }
-void ItemToPurchase::SetPrice(int newPrice){
-  itemPrice = newPrice;
+void ItemToPurchase::SetPrice(int price){
+  itemPrice = price;
 }
-void ItemToPurchase::SetQuantity(int newQuantity){
-  itemQuantity = newQuantity;
+void ItemToPurchase::SetQuantity(int quantity){
+  itemQuantity = quantity;
 }
 
 // extra
