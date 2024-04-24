@@ -1,33 +1,34 @@
 #include <iostream>
 #include "ShoppingCart.h"
+#include <vector>
 
 using namespace std;
 
 //default constructor
 ShoppingCart::ShoppingCart(){
-  customeName = "none";
+  customerName = "none";
   currentDate = "January 1, 2016";
 }
 
 //constructor with parameters 
 ShoppingCart::ShoppingCart(string name, string date){
   name = customerName;
-  date = currentDate;
+  date = currentDate; 
 }
 
-string ShoppingCart::GetCustomerName(){ return customerName; }
+string ShoppingCart::GetCustomerName() const{ return customerName; }
 
-string ShoppingCart::GetDate(){ return currentDate; }
+string ShoppingCart::GetDate() const{ return currentDate; }
 
-void ShoppingCart::AddItem(string ItemToPurchase){
-  cartItems.push_back(ItemToPurchase);
+void ShoppingCart::AddItem(ItemToPurchase ItemToAdd){
+  cartItems.push_back(ItemToAdd);
 }
 
 void ShoppingCart::RemoveItem(string ItemToRemove){
   bool found = false;
-  for(int i = 0; i < cartItems.size() < i++){
-    if(ItemToRemove == cartItems.at(i)){
-      cartItems[i].erase();
+  for(int i = 0; i < cartItems.size(); i++){
+    if(ItemToRemove == cartItems.at(i).GetName()){
+      cartItems.erase(cartItems.begin() + (i-1));
       found = true;
     }
   }
@@ -36,11 +37,11 @@ void ShoppingCart::RemoveItem(string ItemToRemove){
   }
 }
 
-void ShoppingCart::ModifyItem(string ItemToPurchase){
+void ShoppingCart::ModifyItem(ItemToPurchase ItemToMod){
   bool found = false;
   for(int i = 0; i < cartItems.size(); i++){
-    if(ItemToPurchase == cartItems[i].GetName()){
-      cartItems.at(i) = ItemToPurchase;
+    if(ItemToMod.GetName() == cartItems[i].GetName()){
+      cartItems.at(i) = ItemToMod;
     }  
   }
   if(found == false){
@@ -49,7 +50,7 @@ void ShoppingCart::ModifyItem(string ItemToPurchase){
 }
 
 int ShoppingCart::GetNumItemsInCart(){
-  for(int count = 0; i < cartItems.size(); count++){
+  for(int count = 0; count < cartItems.size(); count++){
     return count;
   }
 }
@@ -61,8 +62,3 @@ double ShoppingCart::GetCostOfCart(){
   }
   return totalCost;
 }
-
-
-
-
-
