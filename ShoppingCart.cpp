@@ -12,8 +12,9 @@ ShoppingCart::ShoppingCart(){
 
 //constructor with parameters 
 ShoppingCart::ShoppingCart(string name, string date){
-  name = customerName;
-  date = currentDate; 
+  customerName = name;
+  currentDate = date; 
+  vector<ItemToPurchase> cartItems;
 }
 
 string ShoppingCart::GetCustomerName() const{ return customerName; }
@@ -59,7 +60,7 @@ int ShoppingCart::GetNumItemsInCart(){
 double ShoppingCart::GetCostOfCart(){
   int totalCost = 0;
   for(int i = 0; i < cartItems.size(); i++){
-    totalCost += cartItems[i].GetPrice();
+    totalCost = cartItems[i].GetPrice() + totalCost;
   }
   return totalCost;
 }
