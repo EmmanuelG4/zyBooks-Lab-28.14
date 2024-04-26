@@ -5,7 +5,7 @@ using namespace std;
 #include "ShoppingCart.h"
 
 void PrintMenu(){
-    cout << "MENU" << endl;
+   cout << "MENU" << endl;
     cout << "a - Add item to cart" << endl;
     cout << "d - Remove item from cart" << endl;
     cout << "c - Change item quantity" << endl;
@@ -15,32 +15,34 @@ void PrintMenu(){
 }
 
 void ExecuteMenu(char option, ShoppingCart& theCart){
-    bool repeat = true;
     string name, description;
     int price, quantity;
-    ItemToPurchase item(name, description, price, quantity);
+    ItemToPurchase item;
     switch(option){
         case 'a':
             cout << "ADD ITEM TO CART" << endl;
             cout << "Enter the item name:" << endl;
-            cin >> name;
+            getline(cin, name);
             cout << "Enter the item description:" << endl;
             getline(cin, description);
             cout << "Enter the item price:" << endl;
             cin >> price;
             cout << "Enter the item quantity:" << endl;
             cin >> quantity;
+            item = ItemToPurchase(name, description, price, quantity);
             theCart.AddItem(item);
             break;
         case 'd':
             cout << "REMOVE ITEM FROM CART" << endl;
             cout << "Enter name of item to remove:" << endl;
+            cin.ignore();
             getline(cin, name);
             theCart.RemoveItem(name);
             break;
         case 'c':
             cout << "CHANGE ITEM QUANTITY" << endl;
             cout << "Enter the item name:" << endl;
+            cin.ignore();
             getline(cin, name);
             cout << "Enter the new quantity:" << endl;
             cin >> quantity;
@@ -80,15 +82,18 @@ int main(){
     cout << endl;
     cout << "Choose an option:" << endl;
     cin >> choice;
+    cin.ignore();
     while(choice != 'q'){
         switch(choice){
-            case 'a': case 'd': case 'c': case 'i': case 'o': case 'q':
+            case 'a': case 'd': case 'c': case 'i': case 'o':
                 ExecuteMenu(choice, cart);
                 cin >> choice;
                 break;
             default:
                 cout << "Choose an option:" << endl;
                 cin >> choice;
+                cin.ignore();
+                break;
         }
     }
 
