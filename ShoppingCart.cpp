@@ -51,16 +51,13 @@ void ShoppingCart::ModifyItem(ItemToPurchase ItemToMod){
 }
 
 int ShoppingCart::GetNumItemsInCart(){
-  int count;
-  for(count = 0; count < cartItems.size(); count++){
-    return count;
-  }
+  return cartItems.size();
 }
 
 double ShoppingCart::GetCostOfCart(){
   int totalCost = 0;
   for(int i = 0; i < cartItems.size(); i++){
-    totalCost = cartItems[i].GetPrice() + totalCost;
+    totalCost += (cartItems[i].GetPrice() * cartItems[i].GetQuantity());
   }
   return totalCost;
 }
