@@ -64,6 +64,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart){
 int main(){
     string customerName, date, description;
     char choice;
+    bool keepGoing = true;
 
     cout << "Enter customer's name:" << endl;
     getline(cin, customerName);
@@ -80,11 +81,14 @@ int main(){
     cout << endl;
     cout << "Choose an option:" << endl;
     cin >> choice;
-    while(choice != 'q'){
+    while(choice != 'q' && !keepGoing){
         switch(choice){
-            case 'a': case 'd': case 'c': case 'i': case 'o': case 'q':
+            case 'a': case 'd': case 'c': case 'i': case 'o':
                 ExecuteMenu(choice, cart);
                 cin >> choice;
+                break;
+            case 'q':
+                keepGoing = false;
                 break;
             default:
                 cout << "Choose an option:" << endl;
