@@ -48,7 +48,7 @@ void ShoppingCart::ModifyItem(ItemToPurchase ItemToMod){
   bool found = false;
   for(int i = 0; i < cartItems.size(); i++){
     if(ItemToMod.GetName() == cartItems[i].GetName()){
-      cartItems.at(i) = ItemToMod;
+      cartItems[i].SetQuantity(ItemToMod.GetQuantity());
       found = true;
     }  
   }
