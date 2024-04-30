@@ -36,9 +36,9 @@ void ExecuteMenu(char option, ShoppingCart& theCart){
          theCart.AddItem(item);
          break;
       case 'd':
+         cin.ignore();
          cout << "REMOVE ITEM FROM CART" << endl;
          cout << "Enter name of item to remove:" << endl;
-         cin.ignore();
          getline(cin, name);
          theCart.RemoveItem(name);
          break;
@@ -56,6 +56,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart){
       case 'i':
          cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
          theCart.PrintDescriptions(); 
+         cout << endl;
          break;
       case 'o':
          cout << "OUTPUT SHOPPING CART" << endl;

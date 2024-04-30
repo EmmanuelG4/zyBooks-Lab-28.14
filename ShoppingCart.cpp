@@ -31,6 +31,7 @@ void ShoppingCart::RemoveItem(string ItemToRemove){
   for(i = 0; i < cartItems.size(); i++){
     if(ItemToRemove == cartItems.at(i).GetName()){
       cartItems.erase(cartItems.begin() + (i-1));
+      GetNumItemsInCart() - cartItems[i].GetQuantity();
       found = true;
     }
   }
@@ -50,6 +51,7 @@ void ShoppingCart::ModifyItem(ItemToPurchase ItemToMod){
   }
   if(found == false){
     cout << "Item not found in cart. Nothing modified." << endl;
+    cout << endl;
   }
 }
 
@@ -73,7 +75,7 @@ void ShoppingCart::PrintTotal(){
   cout << customerName << "'s Shopping Cart - " << currentDate << endl;
   cout << "Number of Items: " << GetNumItemsInCart() << endl;
   cout << endl;
-  
+ 
   if(cartItems.size() == 0){
     cout << "SHOPPING CART IS EMPTY" << endl;
   }
