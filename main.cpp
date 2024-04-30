@@ -1,3 +1,6 @@
+//https://github.com/EmmanuelG4/zyBooks-Lab-28.14.git
+//Emmanuel Garcia and Luke Stanford
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -41,11 +44,12 @@ void ExecuteMenu(char option, ShoppingCart& theCart){
          cout << "Enter name of item to remove:" << endl;
          getline(cin, name);
          theCart.RemoveItem(name);
+         cout << endl;
          break;
       case 'c':
+         cin.ignore();
          cout << "CHANGE ITEM QUANTITY" << endl;
          cout << "Enter the item name:" << endl;
-         cin.ignore();
          getline(cin, name);
          cout << "Enter the new quantity:" << endl;
          cin >> quantity;
