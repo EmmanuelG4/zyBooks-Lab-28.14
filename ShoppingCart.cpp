@@ -26,18 +26,21 @@ void ShoppingCart::AddItem(ItemToPurchase ItemToAdd){
 }
 
 void ShoppingCart::RemoveItem(string ItemToRemove){
-  bool found = false;
-  int i;
-  for(i = 0; i < cartItems.size(); i++){
-    if(ItemToRemove == cartItems.at(i).GetName()){
-      cartItems.erase(cartItems.begin() + (i-1));
-      GetNumItemsInCart() - cartItems[i].GetQuantity();
-      found = true;
-    }
+   vector<ItemToPurchase> newCart;
+   bool found = false;
+   for(int i = 0; i < cartItems.size(); i++){
+      if(ItemToRemove != cartItems.at(i).GetName()){
+         newCart.push_back(cartItems.at(i));
+      }
+      else{
+         found = true;
+      }
+   }
+  if(found == true){
+    cartItems = newCart;
   }
-  if(found == false){
-    cout << "Item not found in cart. Nothing removed." << endl;
-    cout << endl;
+  else{
+      cout << "Item not found in cart. Nothing removed." << endl;
   }
 }
 
